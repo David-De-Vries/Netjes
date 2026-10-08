@@ -1,11 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useLanguage } from "../i18n/useLanguage";
+import { NetIcon } from "./illustrations/NetIcon";
 import { StepIcon, type StepIconName } from "./illustrations/StepIcon";
 import { ButtonLink } from "./ui/Button";
 import { Section, SectionHeader } from "./ui/Section";
 
-const icons: StepIconName[] = ["delivery", "bag", "net", "truck"];
+const icons: (StepIconName | "logoNet" | "logoNetBag")[] = ["logoNet", "bag", "logoNetBag", "truck"];
 
 /** Matches 4 × (--how-step-stagger + ends with --how-step-duration) in index.css */
 const HOW_SEQUENCE_MS = 5000;
@@ -64,7 +65,19 @@ export function HowItWorks() {
               <span className={`text-5xl font-extrabold tracking-tight ${settled ? "text-cream" : "text-bollard"}`}>
                 0{i + 1}
               </span>
-              <StepIcon name={icons[i]} className={`size-9 ${settled ? "text-cream" : "text-bollard"}`} />
+              {icons[i] === "logoNet" || icons[i] === "logoNetBag" ? (
+                <NetIcon
+                  className={`size-9 ${settled ? "text-cream" : "text-bollard"}`}
+                  bagMeshClassName={
+                    icons[i] === "logoNetBag" ? (settled ? "text-bollard" : "text-paper") : undefined
+                  }
+                />
+              ) : (
+                <StepIcon
+                  name={icons[i] as StepIconName}
+                  className={`size-9 ${settled ? "text-cream" : "text-bollard"}`}
+                />
+              )}
             </div>
             <h3 className={`mt-10 text-2xl font-bold ${settled ? "text-cream" : "text-ink"}`}>{step.title}</h3>
             <p className={`mt-3 leading-relaxed ${settled ? "text-cream/85" : "text-ink-soft"}`}>{step.text}</p>

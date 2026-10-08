@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useRef, useState, type CSSProperties } from "react";
+import { NetIcon } from "./NetIcon";
 import { StepIcon, type StepIconName } from "./StepIcon";
 
 type Flow = { title: string; steps: string[] };
@@ -10,7 +11,9 @@ type CompareDiagramProps = {
 };
 
 const withoutIcons: StepIconName[] = ["bag", "bird", "scatter", "truck", "broom"];
-const withIcons: StepIconName[] = ["bag", "net", "truck"];
+type GoodIconName = StepIconName | "logoNetBag";
+
+const withIcons: GoodIconName[] = ["bag", "logoNetBag", "truck"];
 
 function FlowRowBad({ flow, icons }: { flow: Flow; icons: StepIconName[] }) {
   return (
@@ -44,7 +47,7 @@ function FlowRowBad({ flow, icons }: { flow: Flow; icons: StepIconName[] }) {
   );
 }
 
-function GoodFlowRow({ flow, icons }: { flow: Flow; icons: StepIconName[] }) {
+function GoodFlowRow({ flow, icons }: { flow: Flow; icons: GoodIconName[] }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const hasPlayedRef = useRef(false);
   const [active, setActive] = useState(false);
@@ -93,7 +96,11 @@ function GoodFlowRow({ flow, icons }: { flow: Flow; icons: StepIconName[] }) {
                       last ? "compare-good-card__chip--accent" : ""
                     }`}
                   >
-                    <StepIcon name={icons[i]} className="compare-good-card__icon" />
+                    {icons[i] === "logoNetBag" ? (
+                      <NetIcon className="compare-good-card__icon" bagMeshClassName="compare-good-card__bag-mesh" />
+                    ) : (
+                      <StepIcon name={icons[i] as StepIconName} className="compare-good-card__icon" />
+                    )}
                   </span>
                   <span className="compare-good-card__label">{step}</span>
                 </span>

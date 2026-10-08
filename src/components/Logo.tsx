@@ -1,27 +1,7 @@
 import { useId } from "react";
 import { site } from "../config/site";
+import { NET_BAG_TRANSFORM, NET_OUTLINE, NetBag, NetMesh } from "./illustrations/NetIcon";
 import { STEP_ICON_BAG_PATH } from "./illustrations/StepIcon";
-
-const NET_OUTLINE =
-  "M4 4 Q24 10 44 4 Q38 24 44 44 Q24 38 4 44 Q10 24 4 4 Z";
-
-const MESH_OFFSETS = Array.from({ length: 17 }, (_, i) => i * 6 - 48);
-
-/** Places the 32×32 step-icon bag in the middle of the net. */
-const BAG_TRANSFORM = "translate(24 25) scale(1.15) translate(-16 -17.25)";
-
-function Mesh() {
-  return (
-    <>
-      {MESH_OFFSETS.map((offset) => (
-        <path key={`a${offset}`} d={`M${offset} 0 L${offset + 48} 48`} />
-      ))}
-      {MESH_OFFSETS.map((offset) => (
-        <path key={`b${offset}`} d={`M${offset + 48} 0 L${offset} 48`} />
-      ))}
-    </>
-  );
-}
 
 /**
  * Square fishing net. In `compact` mode the name slides into the net and
@@ -62,12 +42,12 @@ export function Logo({
             <path d={NET_OUTLINE} />
           </clipPath>
           <clipPath id={bagClipId}>
-            <path d={STEP_ICON_BAG_PATH} transform={BAG_TRANSFORM} />
+            <path d={STEP_ICON_BAG_PATH} transform={NET_BAG_TRANSFORM} />
           </clipPath>
         </defs>
 
         <g clipPath={`url(#${netClipId})`} strokeWidth={1}>
-          <Mesh />
+          <NetMesh />
         </g>
 
         <g
@@ -78,15 +58,7 @@ export function Logo({
               : "translate-x-[14px] scale-50 opacity-0 [transition:translate_200ms_ease-in,scale_200ms_ease-in,opacity_200ms_ease-in]"
           }`}
         >
-          <path d={STEP_ICON_BAG_PATH} transform={BAG_TRANSFORM} fill="currentColor" stroke="none" />
-          <g
-            clipPath={`url(#${bagClipId})`}
-            strokeWidth={0.6}
-            opacity={0.55}
-            className={light ? "text-amsterdam-purple-brown" : "text-cream"}
-          >
-            <Mesh />
-          </g>
+          <NetBag clipId={bagClipId} meshClassName={light ? "text-amsterdam-purple-brown" : "text-cream"} />
         </g>
 
         <path d={NET_OUTLINE} strokeWidth={1.8} />
