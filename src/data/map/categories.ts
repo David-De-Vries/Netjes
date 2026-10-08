@@ -8,7 +8,6 @@ export type CategoryStyle = {
 /** Draw order: first is lowest. */
 export const categoryStyles: Record<MapCategory, CategoryStyle> = {
   streetCollection: { kind: "zone", color: "#4F7A6C" },
-  problemArea: { kind: "zone", color: "#B4553F" },
   requested: { kind: "dashedLine", color: "#F0AD6A" },
   pilot: { kind: "line", color: "#E8833A" },
   underground: { kind: "point", color: "#6F998C" },
@@ -22,7 +21,6 @@ export const filterOrder: MapCategory[] = [
   "streetCollection",
   "underground",
   "otherCollection",
-  "problemArea",
 ];
 
 export const AMSTERDAM_CENTER = { longitude: 4.8945, latitude: 52.3655 };

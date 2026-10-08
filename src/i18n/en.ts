@@ -161,10 +161,6 @@ export const en = {
         label: "Other collection",
         description: "Other drop-off points, such as recycling points.",
       },
-      problemArea: {
-        label: "Nuisance areas",
-        description: "Areas where scattered waste is often reported.",
-      },
     },
     mapLabel: "Interactive map of Amsterdam showing pilot streets and waste collection methods",
     applyPrompt: "Don't see your street?",

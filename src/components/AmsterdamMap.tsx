@@ -12,7 +12,7 @@ const MapCanvas = lazy(() => import("./map/MapCanvas"));
 
 const allVisible = Object.fromEntries(MAP_CATEGORIES.map((c) => [c, true])) as Record<MapCategory, boolean>;
 
-const filterableCategories = new Set<MapCategory>(["pilot", "requested", "underground", "problemArea"]);
+const filterableCategories = new Set<MapCategory>(["pilot", "requested", "underground"]);
 const shownFilters = filterOrder.filter((c) => filterableCategories.has(c));
 
 export function AmsterdamMap() {

@@ -34,7 +34,7 @@ function layersFor(category: MapCategory, visible: boolean): LayerProps[] {
   switch (kind) {
     case "zone":
       return [
-        { id: `${category}-fill`, type: "fill", filter, layout, paint: { "fill-color": color, "fill-opacity": category === "problemArea" ? 0.22 : 0.12 } },
+        { id: `${category}-fill`, type: "fill", filter, layout, paint: { "fill-color": color, "fill-opacity": 0.12 } },
         {
           id: `${category}-outline`,
           type: "line",

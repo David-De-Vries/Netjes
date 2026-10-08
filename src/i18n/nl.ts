@@ -163,10 +163,6 @@ export const nl: Dictionary = {
         label: "Andere inzameling",
         description: "Andere inleverpunten, zoals recyclepunten.",
       },
-      problemArea: {
-        label: "Overlastgebieden",
-        description: "Gebieden waar vaak zwerfafval wordt gemeld.",
-      },
     },
     mapLabel: "Interactieve kaart van Amsterdam met pilotstraten en manieren van afvalinzameling",
     applyPrompt: "Staat jouw straat er niet tussen?",

@@ -6,7 +6,6 @@ export const MAP_CATEGORIES = [
   "streetCollection",
   "underground",
   "otherCollection",
-  "problemArea",
 ] as const;
 
 export type MapCategory = (typeof MAP_CATEGORIES)[number];
